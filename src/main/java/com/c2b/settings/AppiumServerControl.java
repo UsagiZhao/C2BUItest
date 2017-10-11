@@ -45,11 +45,11 @@ public class AppiumServerControl {
             File app = new File(appDir, "zhuanzhuan.apk");
             //Set Capabilities
             capabilities = new DesiredCapabilities();
-   /*         capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
             capabilities.setCapability("platformName", "Android");
             capabilities.setCapability("deviceName", CommandUtils.getDevicesID("adb devices"));
             //设置安卓系统版本
-            capabilities.setCapability("platformVersion", "4.4.2");
+            capabilities.setCapability("platformVersion", CommandUtils.getDevicesVersion("adb shell getprop ro.build.version.release"));
             //设置apk路径
             //capabilities.setCapability("app", app.getAbsolutePath());
             //设置app的主包名和主类名
@@ -60,18 +60,15 @@ public class AppiumServerControl {
             capabilities.setCapability("resetKeyboard", "True");
             //不重新安装apk*/
             capabilities.setCapability("noReset", true);
-
             //Build the Appium service
             builder = new AppiumServiceBuilder();
             builder.withIPAddress(ip);
             builder.usingPort(port);
             builder.withCapabilities(capabilities);
             builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
-
             //Start the server with the builder
             service = AppiumDriverLocalService.buildService(builder);
             service.start();
-
             //初始化
             driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
             return driver;

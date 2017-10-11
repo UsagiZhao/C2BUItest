@@ -66,10 +66,10 @@ public class UIActionUtils {
 
     //微信登录检测
     public static void isWXLogin(AndroidDriver driver) throws Exception {
-        List<WebElement> HomePageElements=driver.findElementsByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageView\")");
-        int x=HomePageElements.size();
-        HomePageElements.get(x-2).click();//点击我的
-        //driver.findElementById("com.wuba.zhuanzhuan:id/axw").click();
+        //List<WebElement> HomePageElements=driver.findElementsByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageView\")");
+        //int x=HomePageElements.size();
+        //HomePageElements.get(3).click();//点击我的
+        driver.findElementById("com.wuba.zhuanzhuan:id/axw").click();
         try {
             if (driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.TextView\").textContains(\"立即登录\")").getText().equals("立即登录")) {
                 driver.findElementByAndroidUIAutomator("new UiSelector().className(\"android.widget.TextView\").textContains(\"立即登录\")").click();//ZZ的点击立即登录
@@ -92,9 +92,11 @@ public class UIActionUtils {
         } catch (Exception e) {
             System.out.println("账号已登录");
         }
-        List<WebElement> MyPageElement=driver.findElementsByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageView\")");
+        Thread.sleep(2000);
+/*        List<WebElement> MyPageElement=driver.findElementsByAndroidUIAutomator("new UiSelector().className(\"android.widget.ImageView\")");
         int y=MyPageElement.size();
-        MyPageElement.get(y-5).click();
+        MyPageElement.get(y-5).click();*/
+        driver.findElementById("com.wuba.zhuanzhuan:id/axt").click();
     }
 
     //清除输入框中的文字

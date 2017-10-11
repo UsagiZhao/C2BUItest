@@ -9,8 +9,8 @@ import java.io.InputStreamReader;
  * Created by 58 on 2017/10/9.
  */
 public class CommandUtils {
-    private static String devicesID=null;
     public static String getDevicesID(String cmd) throws Exception {
+        String devicesID=null;
         Runtime runtime = Runtime.getRuntime();
         Process p = runtime.exec(cmd);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -28,10 +28,20 @@ public class CommandUtils {
         p.destroy();
         return  devicesID;
     }
-
-/*    public static void main(String[] args) throws Exception {
+    public static String getDevicesVersion(String cmd) throws Exception {
+        Runtime runtime = Runtime.getRuntime();
+        Process p = runtime.exec(cmd);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String devicesVersion = bufferedReader.readLine();
+        if(bufferedReader!=null){
+            bufferedReader.close();
+        }
+        p.destroy();
+        return  devicesVersion;
+    }
+/*       public static void main(String[] args) throws Exception {
         CommandUtils commandUtils = new CommandUtils();
-        String ID=commandUtils.getDevicesID("adb devices");
+        String ID=commandUtils.getDevicesVersion("adb shell getprop ro.build.version.release");
         System.out.println(ID);
     }*/
 }
