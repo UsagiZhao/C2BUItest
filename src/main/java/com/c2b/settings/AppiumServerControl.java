@@ -53,8 +53,8 @@ public class AppiumServerControl {
             //设置apk路径
             //capabilities.setCapability("app", app.getAbsolutePath());
             //设置app的主包名和主类名
-            capabilities.setCapability("appPackage", "com.wuba.zhuanzhuan");
-            capabilities.setCapability("appActivity", ".presentation.view.activity.LaunchActivity");
+            capabilities.setCapability("appPackage", "");
+            capabilities.setCapability("appActivity", "");
             //支持中文输入
             capabilities.setCapability("unicodeKeyboard", "True");
             capabilities.setCapability("resetKeyboard", "True");
